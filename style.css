@@ -1,83 +1,265 @@
-/* Reset */
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&family=Open+Sans:wght@400;600&display=swap');
+
+/* Root Colors */
+:root {
+  --color-bg: #fff;
+  --color-text: #222;
+  --color-accent: #0a3d62; /* deep navy */
+  --color-muted: #555;
+  --color-border: #ddd;
+}
+
+/* Reset & base */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* Layout container */
-.container {
-    display: flex;
-    height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 16px;
 }
 
-/* Left side: Image */
-.image-section {
-    flex: 1;
-    background-color: #0a3d62; /* fallback if no image */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+  font-weight: 600;
 }
 
-.image-section img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* keeps proportions, fills area */
+a:hover {
+  border-bottom-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
-/* Right side: Text */
-.text-section {
-    flex: 1;
-    background-color: #1e5f74; /* eye-pleasing blue */
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 50px;
+/* Navigation */
+nav {
+  position: sticky;
+  top: 0;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: center;
+  padding: 1rem 2rem;
+  z-index: 100;
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  font-size: 1rem;
 }
 
-.text-section h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 2rem;
 }
 
-.text-section h2 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin-bottom: 30px;
+nav li a {
+  padding: 0.25rem 0;
+  position: relative;
 }
 
-.contact-info p {
-    margin-bottom: 10px;
-    font-size: 1rem;
+nav li a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: 2px;
 }
 
-.contact-info a {
-    color: #f1c40f; /* golden accent */
-    text-decoration: none;
+/* Hero */
+header {
+  max-width: 1100px;
+  margin: 3rem auto 4rem;
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 0 1rem;
 }
 
-.contact-info a:hover {
-    text-decoration: underline;
+header img.profile-pic {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 6px;
+  filter: grayscale(90%) contrast(1.1);
+  box-shadow: 0 12px 18px rgb(0 0 0 / 0.12);
 }
 
-/* Responsive for mobile */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
+header .hero-text {
+  font-family: 'Merriweather', serif;
+}
 
-    .image-section, .text-section {
-        flex: unset;
-        height: 50vh;
-    }
+header h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1.1;
+}
 
-    .text-section {
-        padding: 20px;
-        text-align: center;
-    }
+header h2 {
+  font-weight: 400;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+}
+
+/* Button styled as understated underline link */
+header a.btn {
+  display: inline-block;
+  margin-top: 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 2px;
+  color: var(--color-accent);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+header a.btn:hover {
+  color: #07385f;
+  border-color: #07385f;
+}
+
+/* Sections */
+section {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+section:first-of-type {
+  border-top: none;
+  margin-top: 0;
+}
+
+h2.section-title {
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  border-bottom: 3px solid var(--color-accent);
+  padding-bottom: 0.2rem;
+  max-width: fit-content;
+}
+
+h3 {
+  font-family: 'Merriweather', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+  color: var(--color-accent);
+}
+
+/* Paragraphs */
+section p {
+  margin-bottom: 1.2rem;
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+ul li {
+  margin-bottom: 0.75rem;
+  padding-left: 1.2rem;
+  position: relative;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Links inside list */
+ul li a {
+  font-weight: 600;
+  color: var(--color-accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+ul li a:hover {
+  border-color: var(--color-accent);
+}
+
+/* Contact */
+section.contact p a {
+  font-weight: 700;
+  color: var(--color-accent);
+  border-bottom: 1px solid transparent;
+}
+
+section.contact p a:hover {
+  border-color: var(--color-accent);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  font-family: 'Open Sans', sans-serif;
+  user-select: none;
+  margin-bottom: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  header img.profile-pic {
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+  }
+
+  header .hero-text h1 {
+    font-size: 2.8rem;
+  }
+
+  header .hero-text h2 {
+    font-size: 1.1rem;
+  }
+
+  nav ul {
+    gap: 1.2rem;
+    font-size: 0.95rem;
+  }
 }
